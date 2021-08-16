@@ -2,6 +2,7 @@ package com.thitiwas.test.chat.testchat.business;
 
 import com.thitiwas.test.chat.testchat.model.ChatMessage;
 import com.thitiwas.test.chat.testchat.model.ChatMessageRequest;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Service;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.Date;
 
 @Service
+@Slf4j
 public class ChatBusiness {
 
     // ส่งข้อความผ่าน protocal websocket
@@ -28,6 +30,7 @@ public class ChatBusiness {
                 .message(chatMessageRequest.getMessage())
                 .created(new Date())
                 .build();
+        log.debug("chatMessageRequest :{}" , chatMessageRequest);
         template.convertAndSend(desination, chatMessage);
     }
 }

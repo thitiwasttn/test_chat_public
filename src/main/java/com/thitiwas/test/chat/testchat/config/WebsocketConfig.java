@@ -6,9 +6,18 @@ import org.springframework.web.socket.config.annotation.EnableWebSocketMessageBr
 import org.springframework.web.socket.config.annotation.StompEndpointRegistry;
 import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerConfigurer;
 
-@EnableWebSocketMessageBroker
 @Configuration
+@EnableWebSocketMessageBroker
 public class WebsocketConfig implements WebSocketMessageBrokerConfigurer {
+
+
+    @Override
+    public void configureMessageBroker(MessageBrokerRegistry registry) {
+        // ช่องทางในการสื่อสารระหว่างที่ สอง ที่
+        registry.setApplicationDestinationPrefixes("/app");
+        registry.enableSimpleBroker("/topic");
+        //WebSocketMessageBrokerConfigurer.super.configureMessageBroker(registry);
+    }
 
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
@@ -18,13 +27,5 @@ public class WebsocketConfig implements WebSocketMessageBrokerConfigurer {
                 // all origin
                 .withSockJS();
         //WebSocketMessageBrokerConfigurer.super.registerStompEndpoints(registry);
-    }
-
-    @Override
-    public void configureMessageBroker(MessageBrokerRegistry registry) {
-        // ช่องทางในการสื่อสารระหว่างที่ สอง ที่
-        registry.setApplicationDestinationPrefixes("/app")
-                .enableSimpleBroker("/topic");
-        //WebSocketMessageBrokerConfigurer.super.configureMessageBroker(registry);
     }
 }

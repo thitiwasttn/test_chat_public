@@ -1,10 +1,7 @@
 package com.thitiwas.test.chat.testchat.config;
 
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.simp.config.MessageBrokerRegistry;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.socket.config.annotation.EnableWebSocketMessageBroker;
 import org.springframework.web.socket.config.annotation.StompEndpointRegistry;
 import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerConfigurer;
@@ -27,19 +24,9 @@ public class WebsocketConfig implements WebSocketMessageBrokerConfigurer {
         registry.addEndpoint("/socket")
                 // path
                 .setAllowedOrigins("http://localhost:4200")
-                // all origin
                 .withSockJS();
+                // all origin
         //WebSocketMessageBrokerConfigurer.super.registerStompEndpoints(registry);
     }
 
-    /*@Bean
-    public WebMvcConfigurer corsConfigurer() {
-        return new WebMvcConfigurer() {
-            @Override
-            public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/greeting-javaconfig")
-                        .allowedOrigins("http://localhost:8080");
-            }
-        };
-    }*/
 }

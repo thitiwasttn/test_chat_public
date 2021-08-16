@@ -7,4 +7,5 @@ public class ChatMessageRequest {
 
     private String message;
 
+    private String from;
 }

@@ -22,11 +22,12 @@ public class ChatBusiness {
     }
 
     public void post(ChatMessageRequest chatMessageRequest) {
-        final String desination = "chat";
+        log.debug("chatMessageRequest : {} " , chatMessageRequest);
+        final String desination = "/topic/chat";
         // validation here
         ChatMessage chatMessage = ChatMessage
                 .builder()
-                .from("from")
+                .from(chatMessageRequest.getFrom())
                 .message(chatMessageRequest.getMessage())
                 .created(new Date())
                 .build();

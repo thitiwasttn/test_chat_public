@@ -1,9 +1,6 @@
 package com.thitiwas.test.chat.testchat.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 

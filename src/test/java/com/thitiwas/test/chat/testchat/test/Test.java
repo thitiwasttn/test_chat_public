@@ -2,6 +2,7 @@ package com.thitiwas.test.chat.testchat.test;
 
 import com.thitiwas.test.chat.testchat.TestchatApplication;
 import com.thitiwas.test.chat.testchat.service.ChannelService;
+import com.thitiwas.test.chat.testchat.service.MessageService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -10,6 +11,7 @@ import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 @SpringBootTest(classes = TestchatApplication.class)
@@ -18,6 +20,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class Test {
     @Autowired
     ChannelService channelService;
+    @Autowired
+    MessageService messageService;
 
     @Before
     public void setUp() throws Exception {
@@ -41,7 +45,7 @@ public class Test {
 
     @org.junit.Test
     public void test() {
-        var test = channelService.findAll();
-        log.debug("test : {} " , test);
+        var test = messageService.findByChannel(1, PageRequest.of(0, 10));
+        log.debug("test : {} ", test);
     }
 }

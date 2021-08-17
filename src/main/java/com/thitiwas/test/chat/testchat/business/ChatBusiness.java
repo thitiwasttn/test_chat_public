@@ -23,7 +23,7 @@ public class ChatBusiness {
 
     public void post(ChatMessageRequest chatMessageRequest) {
         log.debug("chatMessageRequest : {} " , chatMessageRequest);
-        final String desination = "/topic/chat";
+        final String desination = chatMessageRequest.getChannel();
         // validation here
         ChatMessage chatMessage = ChatMessage
                 .builder()

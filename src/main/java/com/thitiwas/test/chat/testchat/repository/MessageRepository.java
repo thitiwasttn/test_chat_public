@@ -8,5 +8,5 @@ import java.util.List;
 
 public interface MessageRepository extends JpaRepository<Message, Integer> {
 
-    List<Message> findByAndChannelId(Integer channelId, Pageable pageable);
+    List<Message> findByAndChannelIdOrderByIdDesc(Integer channelId, Pageable pageable);
 }

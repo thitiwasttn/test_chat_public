@@ -19,7 +19,7 @@ public class MessageServiceImpl implements MessageService{
 
     @Override
     public List<Message> findByChannel(int channelId, Pageable pageable) {
-        return this.messageRepository.findByAndChannelId(channelId, pageable);
+        return this.messageRepository.findByAndChannelIdOrderByIdDesc(channelId, pageable);
     }
 
     @Override

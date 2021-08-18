@@ -29,25 +29,25 @@ public class ChatBusiness {
         log.debug("chatMessageRequest : {} ", chatMessageRequest);
         final String desination = chatMessageRequest.getChannel();
         // log.debug("channel :{}", channel);
-        saveMessage(chatMessageRequest);
+        Message message = saveMessage(chatMessageRequest);
         // validation here
-        ChatMessage chatMessage = ChatMessage
+        /*ChatMessage chatMessage = ChatMessage
                 .builder()
                 .from(chatMessageRequest.getFrom())
                 .message(chatMessageRequest.getMessage())
                 .created(new Date())
                 .build();
-        log.debug("chatMessageRequest :{}", chatMessageRequest);
-        template.convertAndSend(desination, chatMessage);
+        log.debug("chatMessageRequest :{}", chatMessageRequest);*/
+        template.convertAndSend(desination, message);
     }
 
-    private void saveMessage(ChatMessageRequest chat) {
+    private Message saveMessage(ChatMessageRequest chat) {
         String channel = chat.getChannel().replaceAll("/topic/", "");
         Message message = new Message();
         message.setMessage(chat.getMessage());
         message.setChannelId(Integer.valueOf(channel));
         message.setCreateDate(new Date());
         message.setCreateBy(chat.getFrom());
-        messageService.save(message);
+        return messageService.save(message);
     }
 }

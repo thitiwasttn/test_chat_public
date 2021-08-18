@@ -13,8 +13,8 @@ spring:
       base-path: /drugs
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    password: P@ssw0rd
-    username: thitiwas
+    password:
+    username:
     url: jdbc:mysql://61.19.242.56:3306/chat
   jpa:
     show-sql: true

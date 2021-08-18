@@ -46,10 +46,7 @@ public class Test {
 
     @org.junit.Test
     public void test() {
-        /*var channel = channelService.findAll();
-        channel.forEach(channel1 -> {
-            channel1.setName(String.valueOf(channel1.getId()));
-            channelService.save(channel1);
-        });*/
+        /*var message = messageService.findByChannel(1, null);
+        log.debug("message :{}", message);*/
     }
 }

@@ -21,9 +21,12 @@ public class WebsocketConfig implements WebSocketMessageBrokerConfigurer {
 
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
+        String[] allow = new String[2];
+        allow[0] = "http://localhost:4200";
+        allow[1] = "http://61.19.242.56";
         registry.addEndpoint("/socket")
                 // path
-                .setAllowedOrigins("http://localhost:4200");
+                .setAllowedOrigins(allow);
                 //.withSockJS();
                 // all origin
         //WebSocketMessageBrokerConfigurer.super.registerStompEndpoints(registry);

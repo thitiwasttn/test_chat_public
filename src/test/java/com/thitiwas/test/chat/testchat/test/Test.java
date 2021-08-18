@@ -1,6 +1,7 @@
 package com.thitiwas.test.chat.testchat.test;
 
 import com.thitiwas.test.chat.testchat.TestchatApplication;
+import com.thitiwas.test.chat.testchat.entity.Channel;
 import com.thitiwas.test.chat.testchat.service.ChannelService;
 import com.thitiwas.test.chat.testchat.service.MessageService;
 import lombok.extern.slf4j.Slf4j;
@@ -45,7 +46,10 @@ public class Test {
 
     @org.junit.Test
     public void test() {
-        var test = messageService.findByChannel(1, PageRequest.of(0, 10));
-        log.debug("test : {} ", test);
+        /*var channel = channelService.findAll();
+        channel.forEach(channel1 -> {
+            channel1.setName(String.valueOf(channel1.getId()));
+            channelService.save(channel1);
+        });*/
     }
 }

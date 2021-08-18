@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface ChannelService {
     List<Channel> findAll();
+
+    Channel save(Channel channel);
 }

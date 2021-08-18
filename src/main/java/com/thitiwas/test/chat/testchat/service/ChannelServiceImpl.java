@@ -20,4 +20,9 @@ public class ChannelServiceImpl implements ChannelService{
     public List<Channel> findAll() {
         return channelRepository.findAll();
     }
+
+    @Override
+    public Channel save(Channel channel) {
+        return channelRepository.save(channel);
+    }
 }

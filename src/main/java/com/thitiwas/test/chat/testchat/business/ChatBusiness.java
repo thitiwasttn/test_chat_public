@@ -31,13 +31,6 @@ public class ChatBusiness {
         // log.debug("channel :{}", channel);
         Message message = saveMessage(chatMessageRequest);
         // validation here
-        /*ChatMessage chatMessage = ChatMessage
-                .builder()
-                .from(chatMessageRequest.getFrom())
-                .message(chatMessageRequest.getMessage())
-                .created(new Date())
-                .build();
-        log.debug("chatMessageRequest :{}", chatMessageRequest);*/
         template.convertAndSend(desination, message);
     }
 

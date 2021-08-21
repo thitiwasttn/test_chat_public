@@ -16,7 +16,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/chat")
-@CrossOrigin("*")
 @Slf4j
 public class ChatApi {
 
@@ -37,7 +36,7 @@ public class ChatApi {
 
     @PostMapping("/messages")
     public ResponseEntity<List<Message>> getListChat(@RequestBody MessageRequest request) {
-        log.debug("request :{}", request);
+        // log.debug("request :{}", request);
         return ResponseEntity.ok(messageService.findByChannel(request.getChannelId(), PageRequest.of(request.getPage(), request.getLimit())));
     }
 

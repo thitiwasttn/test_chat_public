@@ -13,7 +13,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/channel")
-@CrossOrigin("*")
 public class ChannelApi {
 
     private final ChannelService channelService;

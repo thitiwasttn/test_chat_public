@@ -9,7 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class TestchatApplication {
 
 	public static void main(String[] args) {
-		log.debug("test");
+		// log.debug("test");
 		SpringApplication.run(TestchatApplication.class, args);
 	}
 

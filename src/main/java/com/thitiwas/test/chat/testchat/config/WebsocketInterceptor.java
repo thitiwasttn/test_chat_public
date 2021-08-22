@@ -47,14 +47,14 @@ public class WebsocketInterceptor implements ChannelInterceptor {
 
         return ChannelInterceptor.super.preSend(message, channel);
     }
-    
+
 
     private void unsubscribeProcess(StompHeaderAccessor headerAccessor) {
         if (StompCommand.UNSUBSCRIBE.equals(headerAccessor.getCommand())) {
             int channelInt = chatBusiness.getChannelBySession(headerAccessor.getSessionId());
             chatBusiness.unsubscribeChannel(headerAccessor.getSessionId());
             int memberInRoom = getMemberInChannel(channelInt);
-            log.debug("memberIn channel:{} , number:{}", channelInt, memberInRoom);
+            // log.debug("memberIn channel:{} , number:{}", channelInt, memberInRoom);
         }
     }
 
@@ -67,7 +67,7 @@ public class WebsocketInterceptor implements ChannelInterceptor {
             int channelInt = Integer.parseInt(chatBusiness.getChannelPattern(Objects.requireNonNull(headerAccessor.getDestination())));
             chatBusiness.subscribeToChannel(channelInt, headerAccessor.getSessionId());
             int memberInRoom = getMemberInChannel(channelInt);
-            log.debug("memberIn channel:{} , number:{}", channelInt, memberInRoom);
+            // log.debug("memberIn channel:{} , number:{}", channelInt, memberInRoom);
         }
     }
 }

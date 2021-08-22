@@ -1,5 +1,6 @@
 package com.thitiwas.test.chat.testchat.config;
 
+import com.thitiwas.test.chat.testchat.business.ChatBusiness;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,11 +17,13 @@ public class WebsocketSecurityConfiguration extends AbstractSecurityWebSocketMes
 
 
     private final WebsocketInterceptor interceptors;
-    
+    private final ChatBusiness chatBusiness;
+
     @Autowired
     @Lazy
-    public WebsocketSecurityConfiguration(WebsocketInterceptor interceptors) {
+    public WebsocketSecurityConfiguration(WebsocketInterceptor interceptors, ChatBusiness chatBusiness) {
         this.interceptors = interceptors;
+        this.chatBusiness = chatBusiness;
     }
 
     @Override
@@ -30,7 +33,7 @@ public class WebsocketSecurityConfiguration extends AbstractSecurityWebSocketMes
 
     @Bean
     public WebsocketInterceptor websocketInterceptor() {
-        return new WebsocketInterceptor();
+        return new WebsocketInterceptor(chatBusiness);
     }
 
     @Override

@@ -30,22 +30,44 @@ public class WebsocketInterceptor implements ChannelInterceptor {
             return ChannelInterceptor.super.preSend(message, channel);
         }
 
-        if (StompCommand.CONNECTED.equals(headerAccessor.getCommand())) {
-            //
-        } else if (StompCommand.DISCONNECT.equals(headerAccessor.getCommand())) {
-            //
-        } else if (StompCommand.SUBSCRIBE.equals(headerAccessor.getCommand())) {
-            int channelInt = Integer.parseInt(chatBusiness.getChannelPattern(Objects.requireNonNull(headerAccessor.getDestination())));
-            chatBusiness.subscribeToChannel(channelInt, headerAccessor.getSessionId());
-            int memberInRoom = chatBusiness.getCurrentMemberInRoom(channelInt);
-            log.debug("memberIn channel:{} , number:{}", channelInt, memberInRoom);
-        } else if (StompCommand.UNSUBSCRIBE.equals(headerAccessor.getCommand())) {
-            int channelInt = chatBusiness.getChannelBySession(headerAccessor.getSessionId());
-            chatBusiness.unsubscribeChannel(headerAccessor.getSessionId());
-            int memberInRoom = chatBusiness.getCurrentMemberInRoom(channelInt);
-            log.debug("memberIn channel:{} , number:{}", channelInt, memberInRoom);
+        switch (Objects.requireNonNull(headerAccessor.getCommand())) {
+            case CONNECTED:
+                //
+                break;
+            case DISCONNECT:
+                //
+                break;
+            case SUBSCRIBE:
+                subscribeProcess(headerAccessor);
+                break;
+            case UNSUBSCRIBE:
+                unsubscribeProcess(headerAccessor);
+                break;
         }
 
         return ChannelInterceptor.super.preSend(message, channel);
+    }
+    
+
+    private void unsubscribeProcess(StompHeaderAccessor headerAccessor) {
+        if (StompCommand.UNSUBSCRIBE.equals(headerAccessor.getCommand())) {
+            int channelInt = chatBusiness.getChannelBySession(headerAccessor.getSessionId());
+            chatBusiness.unsubscribeChannel(headerAccessor.getSessionId());
+            int memberInRoom = getMemberInChannel(channelInt);
+            log.debug("memberIn channel:{} , number:{}", channelInt, memberInRoom);
+        }
+    }
+
+    private int getMemberInChannel(int channelInt) {
+        return chatBusiness.getCurrentMemberInRoom(channelInt);
+    }
+
+    private void subscribeProcess(StompHeaderAccessor headerAccessor) {
+        if (StompCommand.SUBSCRIBE.equals(headerAccessor.getCommand())) {
+            int channelInt = Integer.parseInt(chatBusiness.getChannelPattern(Objects.requireNonNull(headerAccessor.getDestination())));
+            chatBusiness.subscribeToChannel(channelInt, headerAccessor.getSessionId());
+            int memberInRoom = getMemberInChannel(channelInt);
+            log.debug("memberIn channel:{} , number:{}", channelInt, memberInRoom);
+        }
     }
 }

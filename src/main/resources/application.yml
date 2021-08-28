@@ -13,9 +13,9 @@ spring:
       base-path:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    password: 
-    username:
-    url: jdbc:mysql://localhost/chat
+    password: P@ssw0rd
+    username: root
+    url: jdbc:mysql://61.19.242.56:3305/chat
   jpa:
     show-sql: true
   main:

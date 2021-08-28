@@ -8,10 +8,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "channel")
-@Getter
-@Setter
-@ToString
-@RequiredArgsConstructor
+@Data
 public class Channel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

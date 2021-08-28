@@ -1,12 +1,17 @@
 package com.thitiwas.test.chat.testchat.entity;
 
-import lombok.Data;
+import lombok.*;
+import org.hibernate.Hibernate;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Table(name = "channel")
-@Data
+@Getter
+@Setter
+@ToString
+@RequiredArgsConstructor
 public class Channel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,5 +20,17 @@ public class Channel {
     @Column(name = "name")
     private String name;
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        Channel channel = (Channel) o;
 
+        return Objects.equals(id, channel.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return 1775193538;
+    }
 }

@@ -1,13 +1,18 @@
 package com.thitiwas.test.chat.testchat.entity;
 
-import lombok.Data;
+import lombok.*;
+import org.hibernate.Hibernate;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Objects;
 
 @Entity
 @Table(name = "message")
-@Data
+@Getter
+@Setter
+@ToString
+@RequiredArgsConstructor
 public class Message {
 
     @Id
@@ -25,4 +30,18 @@ public class Message {
 
     @Column(name = "channel_id")
     private Integer channelId;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        Message message = (Message) o;
+
+        return Objects.equals(id, message.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return 1996936819;
+    }
 }

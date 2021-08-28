@@ -1,7 +1,7 @@
 package com.thitiwas.test.chat.testchat.business;
 
 import com.thitiwas.test.chat.testchat.entity.Channel;
-import com.thitiwas.test.chat.testchat.entity.CountChannel;
+import com.thitiwas.test.chat.testchat.model.CountChannel;
 import com.thitiwas.test.chat.testchat.entity.Message;
 import com.thitiwas.test.chat.testchat.model.ChatMessageRequest;
 import com.thitiwas.test.chat.testchat.service.ChannelService;

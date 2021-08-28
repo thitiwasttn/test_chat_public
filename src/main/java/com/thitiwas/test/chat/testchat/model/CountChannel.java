@@ -1,4 +1,4 @@
-package com.thitiwas.test.chat.testchat.entity;
+package com.thitiwas.test.chat.testchat.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

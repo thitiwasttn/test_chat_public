@@ -2,7 +2,7 @@ package com.thitiwas.test.chat.testchat.controller;
 
 import com.thitiwas.test.chat.testchat.business.ChatBusiness;
 import com.thitiwas.test.chat.testchat.entity.Channel;
-import com.thitiwas.test.chat.testchat.entity.CountChannel;
+import com.thitiwas.test.chat.testchat.model.CountChannel;
 import com.thitiwas.test.chat.testchat.service.ChannelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

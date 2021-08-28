@@ -38,10 +38,10 @@ public class WebsocketInterceptor implements ChannelInterceptor {
                 //
                 break;
             case SUBSCRIBE:
-                subscribeProcess(headerAccessor);
+                // subscribeProcess(headerAccessor);
                 break;
             case UNSUBSCRIBE:
-                unsubscribeProcess(headerAccessor);
+                // unsubscribeProcess(headerAccessor);
                 break;
         }
 
